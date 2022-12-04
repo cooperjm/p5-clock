@@ -1,4 +1,6 @@
 let retroFont;
+let scaled = 1;
+
 function preload() {
   retroFont = loadFont('fonts/digital-7 (mono).ttf');
 }
@@ -13,8 +15,9 @@ function draw() {
 	translate(width / 2, height / 2);
 	rotate(-90);
   let scaleMap = map(width, 0, displayWidth, 0.3, 2);
-  scale(scaleMap);
-  // scale(1)
+  if (width < 800 ? scale(1) : scale(scaleMap));
+  // scale(scaleMap);
+  
 
 	let hr = hour();
 	let mn = minute();
