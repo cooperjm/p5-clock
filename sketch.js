@@ -66,6 +66,8 @@ function clockArm(color, angle, size, armLength, weight) {
 }
 
 function clockText(hours, minutes, seconds, meridiem) {
+  let xPosition = -15;
+  let yPosition = 200;
   rotate(90);
   drawingContext.shadowBlur = 32;
   drawingContext.shadowColor = color(255);
@@ -74,9 +76,9 @@ function clockText(hours, minutes, seconds, meridiem) {
   textFont(retroFont);
   textAlign(CENTER, CENTER);
   textSize(50)
-  text(`${hours}:${minutes}:${seconds}`, -20, 200);
+  text(`${hours}:${minutes}:${seconds}`, xPosition, yPosition);
   textSize(30);
-  text(`${meridiem}`, 100, 209)
+  text(`${meridiem}`, xPosition + 120, yPosition + 8);
 }
 
 function windowResized() {
