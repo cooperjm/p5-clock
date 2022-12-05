@@ -1,5 +1,4 @@
 let retroFont;
-let scaled = 1;
 
 function preload() {
   retroFont = loadFont('fonts/digital-7 (mono).ttf');
@@ -22,14 +21,15 @@ function draw() {
 	let hr = hour() % 12;
 	let mn = minute();
 	let sc = second();  
+  let meridiem = hour() > 11 ? 'pm' : 'am';
 
-  hoursText = hr === 0 ? 12 : hr;
-  minutesText = mn > 9 ? mn : '0' + mn;
-  secondsText = sc > 9 ? sc : '0' + sc;
+  let hoursText = hr === 0 ? 12 : hr;
+  let minutesText = mn > 9 ? mn : '0' + mn;
+  let secondsText = sc > 9 ? sc : '0' + sc;
 
-  hourColor = color(150, 255, 100);
-  minuteColor = color(150, 100, 255);
-  secondColor = color(255, 100, 150);
+  let hourColor = color(150, 255, 100);
+  let minuteColor = color(150, 100, 255);
+  let secondColor = color(255, 100, 150);
 
 	
 	let secondAngle = map(sc, 0, 60, 0, 360);
@@ -45,7 +45,7 @@ function draw() {
 	stroke(255);
 	point(0, 0);
 
-  clockText();
+  clockText(hoursText, minutesText, secondsText, meridiem);
   
 }
 
@@ -64,7 +64,7 @@ function clockArm(color, angle, size, armLength, weight) {
 	pop();
 }
 
-function clockText() {
+function clockText(hours, minutes, seconds, meridiem) {
   rotate(90);
   drawingContext.shadowBlur = 32;
   drawingContext.shadowColor = color(255);
@@ -73,7 +73,9 @@ function clockText() {
   textFont(retroFont);
   textAlign(CENTER, CENTER);
   textSize(50)
-	text(hoursText + ':' + minutesText + ':' + secondsText, 0, 200);
+  text(`${hours}:${minutes}:${seconds}`, 0, 200);
+  textSize(30);
+  text(`${meridiem}`, 120, 209)
 }
 
 function windowResized() {
