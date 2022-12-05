@@ -19,11 +19,11 @@ function draw() {
   // scale(scaleMap);
   
 
-	let hr = hour();
+	let hr = hour() % 12;
 	let mn = minute();
 	let sc = second();  
 
-  hoursText = hr % 12;
+  hoursText = hr === 0 ? 12 : hr;
   minutesText = mn > 9 ? mn : '0' + mn;
   secondsText = sc > 9 ? sc : '0' + sc;
 
