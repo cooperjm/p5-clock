@@ -12,6 +12,7 @@ function setup() {
 function draw() {
 	background(0);
 	translate(width / 2, height / 2);
+  translate(0, -50);
 	rotate(-90);
   let scaleMap = map(width, 0, displayWidth, 0.3, 2);
   if (width < 800 ? scale(1) : scale(scaleMap));
@@ -73,9 +74,9 @@ function clockText(hours, minutes, seconds, meridiem) {
   textFont(retroFont);
   textAlign(CENTER, CENTER);
   textSize(50)
-  text(`${hours}:${minutes}:${seconds}`, 0, 200);
+  text(`${hours}:${minutes}:${seconds}`, -20, 200);
   textSize(30);
-  text(`${meridiem}`, 120, 209)
+  text(`${meridiem}`, 100, 209)
 }
 
 function windowResized() {
